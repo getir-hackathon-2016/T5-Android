@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    android:gravity="center_vertical"
+    android:background="#f8f8f8">
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardElevation="5dp"
+        android:layout_margin="6dp"
+        card_view:cardUseCompatPadding="true"
+        app:cardUseCompatPadding="true"
+        card_view:cardCornerRadius="6dp"
+        app:cardCornerRadius="6dp"
+        android:background="#ffffff">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp" >
+
+                <EditText
+                    style="@style/oval_edittext"
+                    android:layout_width="match_parent"
+                    android:id="@+id/emailET"
+                    android:hint="@string/email_address"
+                    android:layout_height="match_parent"
+                    android:singleLine="true" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/imageView3"
+                    android:layout_gravity="left|center_vertical"
+                    android:src="@drawable/email_edittext_icon" />
+            </FrameLayout>
+
+            <include layout="@layout/form_line"></include>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp">
+
+                <EditText
+                    style="@style/oval_edittext"
+                    android:layout_width="match_parent"
+                    android:id="@+id/passwordET"
+                    android:hint="@string/password"
+                    android:imeOptions="actionDone"
+                    android:layout_height="match_parent"
+                    android:inputType="textPassword" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/imageView4"
+                    android:layout_gravity="left|center_vertical"
+                    android:src="@drawable/password_edittext_icon" />
+            </FrameLayout>
+
+            <include
+                layout="@layout/form_line" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+
+            android:text="@string/login"
+            android:id="@+id/loginTV"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            style="@style/main_button"
+            android:layout_marginBottom="-3dp" />
+
+    </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
