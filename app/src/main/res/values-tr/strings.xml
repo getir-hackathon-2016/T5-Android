@@ -27,4 +27,6 @@
     <string name="already_member">Zaten Üyeyim</string>
     <string name="enter_address">Adresinizi giriniz</string>
     <string name="daily_menu">Günün Menüsü:</string>
+    <string name="add_new_address">Yeni Adres Ekle</string>
+    <string name="address_added_successfully">Adresiniz başarıyla kaydedildi!</string>
 </resources>

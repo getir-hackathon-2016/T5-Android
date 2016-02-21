@@ -27,4 +27,6 @@
     <string name="already_member">Already member</string>
     <string name="enter_address">Enter address</string>
     <string name="daily_menu">Menu of the day:</string>
+    <string name="add_new_address">Add New Address</string>
+    <string name="address_added_successfully">Your Address is succesfully added!</string>
 </resources>

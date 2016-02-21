@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -35,6 +36,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.squareup.otto.Subscribe;
 import com.yayandroid.locationmanager.LocationBaseActivity;
@@ -115,6 +118,7 @@ public class MapActivity extends LocationBaseActivity implements OnMapReadyCallb
             AppServices.getCloseSellers(loc, new AppServices.CloseSellersCallback() {
                 @Override
                 public void onReceived(CloseSellers closeSellers) {
+                    setCloseSellerPins(closeSellers);
                     NearestMenuAdapter adapter = new NearestMenuAdapter(inflater, closeSellers);
                     adapter.setOnItemClickListener(new NearestMenuAdapter.AdapterItemClickListener() {
                         @Override
@@ -125,10 +129,48 @@ public class MapActivity extends LocationBaseActivity implements OnMapReadyCallb
                             MapActivity.activity.startActivity(intent);
                         }
                     });
+
                     recyclerView.setAdapter(adapter);
                     noFoodContainerLL.setVisibility(closeSellers.data.size()==0 ? View.VISIBLE : View.GONE);
                 }
             });
+        }
+    }
+
+    private void setInfoWindowAdapter() {
+        googleMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+            //Use default infoWindow frame
+            @Override
+            public View getInfoWindow(Marker marker) {
+                return null;
+            }
+
+            @Override
+            public View getInfoContents(Marker marker) {
+                // Getting view from the layout file
+                View view = MapActivity.this.getLayoutInflater().inflate(R.layout.custom_marker, null);
+                // Getting the position from the marker
+                LatLng latLng = marker.getPosition();
+
+                //UI elements
+                TextView nameSurnameTV = (TextView) view.findViewById(R.id.nameSurnameTV);
+                TextView foodTV = (TextView) view.findViewById(R.id.foodTV);
+                nameSurnameTV.setText(marker.getTitle());
+                foodTV.setText(marker.getSnippet());
+
+                return view;
+            }
+        });
+    }
+
+    private void setCloseSellerPins(CloseSellers closeSellerPins){
+        googleMap.clear();
+        for(UserSelf user : closeSellerPins.data){
+            if(user.user.address.size()>0){
+                Address lastaddress = user.user.address.get(user.user.address.size()-1);
+                LatLng loc = new LatLng(lastaddress.location.latitude, lastaddress.location.longitude);
+                googleMap.addMarker(new MarkerOptions().position(loc).title(user.user.name+" "+user.user.surname)).setSnippet(TextUtils.join(", ", user.activeMenu.foodNames)+"  "+user.activeMenu.totalPrice);
+            }
         }
     }
 
@@ -196,11 +238,10 @@ public class MapActivity extends LocationBaseActivity implements OnMapReadyCallb
                     public void onResponse() {
                         ProgressDialogHelper.dismiss();
                         //setAddressLL.setVisibility(View.INVISIBLE);
-                        addressTV.setText("Yeni Adres Ekle");
+                        addressTV.setText(getString(R.string.add_new_address));
                         allAddressLL.setVisibility(View.VISIBLE);
                         UserSelf.refresh();
-                        Commons.showDialog(MapActivity.this, "Adresiniz başarıyla kaydedildi!");
-
+                        Commons.showDialog(MapActivity.this, getString(R.string.address_added_successfully));
                     }
                 });
                 dialog.dismiss();
@@ -213,7 +254,7 @@ public class MapActivity extends LocationBaseActivity implements OnMapReadyCallb
     public void onMapReady(GoogleMap googleMap) {
         isMapReady = true;
         this.googleMap = googleMap;
-
+        setInfoWindowAdapter();
         if(UserSelf.getInstance().user.address!=null && UserSelf.getInstance().user.address.size()>0){
             Address currentAddress = UserSelf.getInstance().user.address.get(UserSelf.getInstance().user.address.size() - 1);
             addressTV.setText(currentAddress.description);
@@ -221,7 +262,7 @@ public class MapActivity extends LocationBaseActivity implements OnMapReadyCallb
             CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
             googleMap.moveCamera(center);
             googleMap.animateCamera(zoom);
-            addressTV.setText("Yeni Adres Ekle");
+            addressTV.setText(getString(R.string.add_new_address));
             allAddressLL.setVisibility(View.VISIBLE);
 
         }else{
