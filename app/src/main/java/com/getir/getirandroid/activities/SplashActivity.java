@@ -9,6 +9,7 @@ import com.getir.getirandroid.R;
 import com.getir.getirandroid.models.User;
 import com.getir.getirandroid.models.UserSelf;
 import com.getir.getirandroid.service.AppServices;
+import com.orhanobut.hawk.Hawk;
 
 /*Created by guray on 20/02/16.*/
 public class SplashActivity extends FragmentActivity {
@@ -19,20 +20,27 @@ public class SplashActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
-        if(UserSelf.getInstance()!=null && UserSelf.getInstance().user!=null && UserSelf.getInstance().user.email!=null && UserSelf.getInstance().user.password!=null){
-            UserSelf.getInstance().isUserLoggedIn = true;
-            AppServices.getUser(UserSelf.getInstance().id, new AppServices.UserCallback() {
-                @Override
-                public void onUserReceived(UserSelf user) {
-                    UserSelf.setInstance(user);
-                    UserSelf.getInstance().isUserLoggedIn = true;
-                    handler.postDelayed(mapRunnable, 1000);
-                }
-            });
+        Boolean  isseen =  Hawk.get("tutorialSeen");
+        if(isseen!=null && isseen){
+            if(UserSelf.getInstance()!=null && UserSelf.getInstance().user!=null && UserSelf.getInstance().user.email!=null && UserSelf.getInstance().user.password!=null){
+                UserSelf.getInstance().isUserLoggedIn = true;
+                AppServices.getUser(UserSelf.getInstance().id, new AppServices.UserCallback() {
+                    @Override
+                    public void onUserReceived(UserSelf user) {
+                        UserSelf.setInstance(user);
+                        UserSelf.getInstance().isUserLoggedIn = true;
+                        handler.postDelayed(mapRunnable, 1000);
+                    }
+                });
+            }else{
+                handler.postDelayed(registeRunnable, 1000);
+            }
         }else{
-            handler.postDelayed(registeRunnable, 1000);
+            Intent intent = new Intent(SplashActivity.this, TutorialActivity.class);
+            startActivity(intent);
+            SplashActivity.this.finish();
         }
+
     }
 
     Runnable mapRunnable = new Runnable() {

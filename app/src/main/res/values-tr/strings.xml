@@ -29,4 +29,9 @@
     <string name="daily_menu">Günün Menüsü:</string>
     <string name="add_new_address">Yeni Adres Ekle</string>
     <string name="address_added_successfully">Adresiniz başarıyla kaydedildi!</string>
+    <string name="enter">Giriş</string>
+    <string name="tutorial_page1">Çevrendeki ev yemeklerini gör</string>
+    <string name="tutorial_page2">Sipariş ver biz senin verine alalım. Evine kadar getirelim</string>
+    <string name="tutorial_page3">İstersen sende hazırlayacağın yemeklerin alıcısını bul </string>
+    <string name="tutorial_page4">Hem sağlıklı beslinin hemde bütçenize katkıda bulunun</string>
 </resources>

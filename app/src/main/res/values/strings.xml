@@ -29,4 +29,9 @@
     <string name="daily_menu">Menu of the day:</string>
     <string name="add_new_address">Add New Address</string>
     <string name="address_added_successfully">Your Address is succesfully added!</string>
+    <string name="enter">Enter</string>
+    <string name="tutorial_page1">See hommade food cooks around</string>
+    <string name="tutorial_page2">We will get your order and bring it to you</string>
+    <string name="tutorial_page3">You can also sell your foods </string>
+    <string name="tutorial_page4">Save money and enjoy healthy food</string>
 </resources>

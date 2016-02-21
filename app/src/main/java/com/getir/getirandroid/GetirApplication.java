@@ -9,6 +9,7 @@ import com.orhanobut.hawk.Hawk;
 import com.orhanobut.hawk.HawkBuilder;
 
 import io.fabric.sdk.android.Fabric;
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /* Created by guray on 20/02/16.*/
 public class GetirApplication extends Application {
@@ -20,5 +21,11 @@ public class GetirApplication extends Application {
         ServiceConnector.init();
         UserSelf.init();
         AppData.init();
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                        .setDefaultFontPath("fonts/GloberRegular.otf")
+                        .setFontAttrId(R.attr.fontPath)
+                        .build()
+        );
+
     }
 }
