@@ -16,10 +16,9 @@ import java.util.ArrayList;
 public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder>{
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        TextView nameSurnameTV, foodsTV, priceTV;
+        TextView foodsTV, priceTV;
         public ViewHolder(View v) {
             super(v);
-            nameSurnameTV = (TextView) v.findViewById(R.id.nameSurnameTV);
             foodsTV = (TextView) v.findViewById(R.id.foodsTV);
             priceTV = (TextView) v.findViewById(R.id.priceTV);
         }
@@ -34,7 +33,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.row_address, parent, false);
+        View view = inflater.inflate(R.layout.row_order, parent, false);
         ViewHolder vh = new ViewHolder(view);
         return vh;
     }
@@ -42,7 +41,6 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final OrderItem orderItem = orderItems.get(position);
-        holder.nameSurnameTV.setText("");
         holder.foodsTV.setText(TextUtils.join(", ", orderItem.foodNames));
         holder.priceTV.setText(orderItem.totalPrice+" "+ MainActivity.activity.getString(R.string.tl));
     }
