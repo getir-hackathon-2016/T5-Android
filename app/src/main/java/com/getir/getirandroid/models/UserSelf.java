@@ -17,6 +17,8 @@ public class UserSelf {
     public OrderItem activeMenu;
     public ArrayList<OrderItem> allMenu;
 
+    public double distance;
+
     public boolean isUserLoggedIn = false;
 
     static UserSelf current;

@@ -29,7 +29,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="10 dk"
-                android:id="@+id/textView3"
+                android:id="@+id/distanceTV"
                 android:layout_weight="1"
                 android:textSize="18sp"
                 android:gravity="center_vertical|right"

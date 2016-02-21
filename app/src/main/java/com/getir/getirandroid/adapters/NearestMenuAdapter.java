@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.getir.getirandroid.R;
 import com.getir.getirandroid.models.CloseSellers;
 import com.getir.getirandroid.models.UserSelf;
+import com.getir.getirandroid.utilities.Commons;
 
 public class NearestMenuAdapter extends RecyclerView.Adapter<NearestMenuAdapter.ViewHolder> {
 
@@ -27,13 +28,14 @@ public class NearestMenuAdapter extends RecyclerView.Adapter<NearestMenuAdapter.
         protected TextView nameSurnameTV;
         protected TextView priceTV;
         protected TextView menuTV;
+        protected TextView distanceTV;
         public ViewHolder(View itemView) {
             super(itemView);
             rowLL = (LinearLayout)itemView.findViewById(R.id.rowLL);
             nameSurnameTV = (TextView) itemView.findViewById(R.id.nameSurnameTV);
             priceTV = (TextView) itemView.findViewById(R.id.priceTV);
             menuTV = (TextView) itemView.findViewById(R.id.menuTV);
-
+            distanceTV = (TextView) itemView.findViewById(R.id.distanceTV);
         }
     }
 
@@ -67,6 +69,8 @@ public class NearestMenuAdapter extends RecyclerView.Adapter<NearestMenuAdapter.
         if(neigbour.activeMenu!=null && neigbour.activeMenu.foodNames!=null){
             holder.menuTV.setText(TextUtils.join(",",neigbour.activeMenu.foodNames));
         }
+
+        holder.distanceTV.setText(Commons.getDistanceInKM(neigbour.distance));
 
     }
 

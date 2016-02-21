@@ -21,4 +21,17 @@ public class Commons {
         float px = dp * (metrics.densityDpi / 160f);
         return px;
     }
+
+    public static String getDistanceInKM(double distance){
+        return round(distance * 10, 2)+" KM";
+    }
+
+    private static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
+    }
 }

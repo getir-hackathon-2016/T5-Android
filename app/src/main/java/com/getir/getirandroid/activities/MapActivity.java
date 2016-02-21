@@ -147,12 +147,7 @@ public class MapActivity extends LocationBaseActivity implements OnMapReadyCallb
 
             @Override
             public View getInfoContents(Marker marker) {
-                // Getting view from the layout file
                 View view = MapActivity.this.getLayoutInflater().inflate(R.layout.custom_marker, null);
-                // Getting the position from the marker
-                LatLng latLng = marker.getPosition();
-
-                //UI elements
                 TextView nameSurnameTV = (TextView) view.findViewById(R.id.nameSurnameTV);
                 TextView foodTV = (TextView) view.findViewById(R.id.foodTV);
                 nameSurnameTV.setText(marker.getTitle());
@@ -254,6 +249,33 @@ public class MapActivity extends LocationBaseActivity implements OnMapReadyCallb
     public void onMapReady(GoogleMap googleMap) {
         isMapReady = true;
         this.googleMap = googleMap;
+        this.googleMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
+            @Override
+            public void onCameraChange(CameraPosition cameraPosition) {
+                com.getir.getirandroid.models.Location loc = new com.getir.getirandroid.models.Location();
+                loc.longitude = cameraPosition.target.longitude;
+                loc.latitude = cameraPosition.target.latitude;
+                AppServices.getCloseSellers(loc, new AppServices.CloseSellersCallback() {
+                    @Override
+                    public void onReceived(CloseSellers closeSellers) {
+                        setCloseSellerPins(closeSellers);
+                        NearestMenuAdapter adapter = new NearestMenuAdapter(inflater, closeSellers);
+                        adapter.setOnItemClickListener(new NearestMenuAdapter.AdapterItemClickListener() {
+                            @Override
+                            public void onClicked(UserSelf neigbour) {
+                                Intent intent = new Intent(MapActivity.activity, MainActivity.class);
+                                intent.putExtra("target", "AddCardFragment");
+                                intent.putExtra("orderItem", new Gson().toJson(neigbour.activeMenu, OrderItem.class).toString());
+                                MapActivity.activity.startActivity(intent);
+                            }
+                        });
+
+                        recyclerView.setAdapter(adapter);
+                        noFoodContainerLL.setVisibility(closeSellers.data.size()==0 ? View.VISIBLE : View.GONE);
+                    }
+                });
+            }
+        });
         setInfoWindowAdapter();
         if(UserSelf.getInstance().user.address!=null && UserSelf.getInstance().user.address.size()>0){
             Address currentAddress = UserSelf.getInstance().user.address.get(UserSelf.getInstance().user.address.size() - 1);
