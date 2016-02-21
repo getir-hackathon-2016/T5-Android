@@ -5,57 +5,57 @@
     android:layout_width="match_parent"
     android:layout_height="250dp">
 
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <FrameLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <fragment
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:id="@+id/map"
-            tools:context=".MainActivity"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            class="com.google.android.gms.maps.SupportMapFragment"/>
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="vertical" android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginBottom="15dp">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:background="@drawable/infowindow_bg"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center_vertical"
-                android:id="@+id/setAddressLL"
-                android:focusableInTouchMode="false">
+            <fragment
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:id="@+id/map"
+                tools:context=".MainActivity"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                class="com.google.android.gms.maps.SupportMapFragment"/>
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical" android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginBottom="15dp">
 
-                <TextView
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Teslimat adresi belirle"
-                    android:id="@+id/textView"
-                    android:textColor="#ffffff"
-                    android:textSize="16sp" />
+                    android:layout_height="40dp"
+                    android:background="@drawable/infowindow_bg"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_vertical"
+                    android:id="@+id/setAddressLL"
+                    android:focusableInTouchMode="false">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/set_address"
+                        android:id="@+id/textView"
+                        android:textColor="#ffffff"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/imageView5"
+                    android:src="@drawable/location_pin" />
+
             </LinearLayout>
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:id="@+id/imageView5"
-                android:src="@drawable/location_pin" />
-
-        </LinearLayout>
-    </FrameLayout>
-</LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
 </LinearLayout>

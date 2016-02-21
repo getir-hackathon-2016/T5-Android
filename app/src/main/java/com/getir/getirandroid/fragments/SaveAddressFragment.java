@@ -64,8 +64,6 @@ public class SaveAddressFragment extends BaseFragment  implements OnMapReadyCall
                 location.setLatitude(cameraPosition.target.latitude);
             }
         });
-
-        //  googleMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
     }
 
     public static SaveAddressFragment newInstance(Location location) {

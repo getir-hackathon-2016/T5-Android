@@ -1,98 +1,78 @@
 package com.getir.getirandroid.adapters;
 
-import android.location.Location;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.getir.getirandroid.R;
-import com.getir.getirandroid.activities.MainActivity;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.CameraPosition;
+import com.getir.getirandroid.models.CloseSellers;
+import com.getir.getirandroid.models.UserSelf;
 
 public class NearestMenuAdapter extends RecyclerView.Adapter<NearestMenuAdapter.ViewHolder> {
 
+    public interface AdapterItemClickListener{
+        void onClicked(UserSelf neigbour);
+    }
 
-
-
-    protected static FragmentManager fm;
+    public AdapterItemClickListener listener;
+    public void setOnItemClickListener(AdapterItemClickListener listener){
+        this.listener = listener;
+    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
+        protected LinearLayout rowLL;
+        protected TextView nameSurnameTV;
+        protected TextView priceTV;
+        protected TextView menuTV;
         public ViewHolder(View itemView) {
-            super(itemView); //row ait bilgiler buraya girilecek
+            super(itemView);
+            rowLL = (LinearLayout)itemView.findViewById(R.id.rowLL);
+            nameSurnameTV = (TextView) itemView.findViewById(R.id.nameSurnameTV);
+            priceTV = (TextView) itemView.findViewById(R.id.priceTV);
+            menuTV = (TextView) itemView.findViewById(R.id.menuTV);
 
         }
     }
 
-    public static class HeaderViewHolder extends RecyclerView.ViewHolder{
-        protected SupportMapFragment mapFragment;
-        public boolean isMapReady = false;
-        GoogleMap googleMap;
-        Location lastLocation = new Location("");;
-        public HeaderViewHolder(View itemView) {
-            super(itemView); //row ait bilgiler buraya girilecek
-            mapFragment = (SupportMapFragment) fm.findFragmentById(R.id.map);
-             mapFragment.getMapAsync(new OnMapReadyCallback() {
-                 @Override
-                 public void onMapReady(GoogleMap gm) {
-                     isMapReady = true;
-                     googleMap = gm;
-                     googleMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
-                         @Override
-                         public void onCameraChange(CameraPosition cameraPosition) {
-                             lastLocation.setLongitude(cameraPosition.target.longitude);
-                             lastLocation.setLatitude(cameraPosition.target.latitude);
-                         }
-                     });
-                 }
-             });
-
-        }
-    }
-
-    public NearestMenuAdapter(FragmentManager fm){
-        this.fm = fm;
+    LayoutInflater inflater;
+    CloseSellers closeSellers;
+    public NearestMenuAdapter(LayoutInflater inflater, CloseSellers closeSellers){
+        this.inflater = inflater;
+        this.closeSellers = closeSellers;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ViewHolder vh = null;
-        if(viewType==0) { // Header
-            View view = MainActivity.inflater.inflate(R.layout.row_main_map, parent, false);
-            vh = new ViewHolder(view);
-        }else if(viewType==1){ // normal
-            View view = MainActivity.inflater.inflate(R.layout.row_menu, parent, false);
-            vh = new ViewHolder(view);
-        }
+        View view = inflater.inflate(R.layout.row_menu, parent, false);
+        ViewHolder vh = new ViewHolder(view);
         return vh;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        if(holder.getItemViewType()==0) { // header
+        final UserSelf neigbour = closeSellers.data.get(position);
+        holder.rowLL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(listener!=null)
+                    listener.onClicked(neigbour);
+            }
+        });
 
-        }else if(holder.getItemViewType()==1){ // normal
-
+        holder.nameSurnameTV.setText(neigbour.user.name + " " + neigbour.user.surname);
+        holder.priceTV.setText(neigbour.activeMenu.totalPrice+" TL");
+        if(neigbour.activeMenu!=null && neigbour.activeMenu.foodNames!=null){
+            holder.menuTV.setText(TextUtils.join(",",neigbour.activeMenu.foodNames));
         }
-    }
 
-    @Override
-    public int getItemViewType(int position) {
-        if(position==0){
-            return 0; // header
-        }else{
-            return 1;
-        }
     }
 
     @Override
     public int getItemCount() {
-
-        return 8;
+        return closeSellers.data.size();
     }
-
 
 }

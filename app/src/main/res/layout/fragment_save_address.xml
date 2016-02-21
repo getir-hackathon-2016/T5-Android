@@ -47,7 +47,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Teslimat adresi belirle"
+                            android:text="@string/set_address"
                             android:id="@+id/textView"
                             android:textColor="#ffffff"
                             android:textSize="16sp" />
@@ -74,14 +74,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:id="@+id/editText"
-                android:hint="Başlık (Ev, İşyeri)"
+                android:hint="@string/address_title"
                 android:background="#ffffff" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:id="@+id/editText2"
-                android:hint="Adres"
+                android:hint="@string/address"
                 android:background="#ffffff" />
 
             <LinearLayout
@@ -93,7 +93,7 @@
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:id="@+id/editText3"
-                    android:hint="Bina No"
+                    android:hint="@string/building_number"
                     android:background="#ffffff"
                     android:layout_weight="1" />
 
@@ -101,7 +101,7 @@
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:id="@+id/editText4"
-                    android:hint="Daire No"
+                    android:hint="@string/apartment_no"
                     android:background="#ffffff"
                     android:layout_weight="1" />
             </LinearLayout>
@@ -110,16 +110,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:id="@+id/editText5"
-                android:hint="Adres Tarifi"
+                android:hint="@string/address_txt"
                 android:background="#ffffff" />
 
-            <TextView
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:text="Kaydet"
-                style="@style/main_button"
-                android:id="@+id/saveTV"
-                android:layout_gravity="center_horizontal" />
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="@string/save"
+                    style="@style/main_button"
+                    android:id="@+id/saveTV"
+                    android:layout_gravity="center_horizontal" />
+            </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 

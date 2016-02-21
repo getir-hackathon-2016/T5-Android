@@ -1,14 +1,16 @@
 package com.getir.getirandroid.models;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
-/**
- * Created by guray on 20/02/16.
- */
+/* Created by guray on 20/02/16. */
 public class OrderItem {
-    public Integer Id;
+    @SerializedName("_id")
+    public String Id;
+
     public String readyAt;
     public String createdAt;
     public double totalPrice;
-    public ArrayList<String> box; // yemek item isimleri
+    public ArrayList<String> foodNames; // yemek item isimleri
 }

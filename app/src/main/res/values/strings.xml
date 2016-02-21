@@ -7,4 +7,24 @@
     <string name="password">Password</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
+    <string name="set_address">Pin your address</string>
+    <string name="address_title">Title (Home etc.)</string>
+    <string name="address">Address</string>
+    <string name="building_number">Building No</string>
+    <string name="apartment_no">Apartment No</string>
+    <string name="address_txt">Address Description</string>
+    <string name="save">Save</string>
+    <string name="tl">TL</string>
+    <string name="order_added">Your order is in taken</string>
+    <string name="ok">ok</string>
+    <string name="please_select_address">Please select an address for order</string>
+    <string name="will_pay">Payment: </string>
+    <string name="all_addresses">All Addresses</string>
+    <string name="no_near_place">There is no food around you!</string>
+    <string name="add_order">Add Order</string>
+    <string name="addresses">Addresses</string>
+    <string name="orders">Orders</string>
+    <string name="already_member">Already member</string>
+    <string name="enter_address">Enter address</string>
+    <string name="daily_menu">Menu of the day:</string>
 </resources>

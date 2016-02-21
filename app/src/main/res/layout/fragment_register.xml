@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="@drawable/splash_bg"
     android:padding="15dp"
     android:gravity="center_vertical">
     <android.support.v7.widget.CardView
@@ -33,110 +33,110 @@
                 android:padding="10dp">
 
                 <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp">
 
-            <EditText
-                android:layout_width="match_parent"
-                style="@style/oval_edittext"
-                android:id="@+id/nameET"
-                android:hint="Name"
-                android:singleLine="true" />
+                    <EditText
+                        android:layout_width="match_parent"
+                        style="@style/oval_edittext"
+                        android:id="@+id/nameET"
+                        android:hint="Name"
+                        android:singleLine="true" />
 
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:id="@+id/imageView"
-                android:layout_gravity="left|center_vertical"
-                android:src="@drawable/name_edittext_icon" />
-        </FrameLayout>
-
-                <include layout="@layout/form_line"></include>
-
-                <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp">
-
-            <EditText
-                style="@style/oval_edittext"
-                android:layout_width="match_parent"
-                android:id="@+id/surnameET"
-                android:hint="Surname"
-                android:layout_height="match_parent"
-                android:singleLine="true" />
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:id="@+id/imageView2"
-                android:layout_gravity="left|center_vertical"
-                android:src="@drawable/name_edittext_icon" />
-        </FrameLayout>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/imageView"
+                        android:layout_gravity="left|center_vertical"
+                        android:src="@drawable/name_edittext_icon" />
+                </FrameLayout>
 
                 <include layout="@layout/form_line"></include>
 
                 <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp" >
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp">
 
-            <EditText
-                style="@style/oval_edittext"
-                android:layout_width="match_parent"
-                android:id="@+id/emailET"
-                android:hint="@string/email_address"
-                android:layout_height="match_parent"
-                android:singleLine="true" />
+                    <EditText
+                        style="@style/oval_edittext"
+                        android:layout_width="match_parent"
+                        android:id="@+id/surnameET"
+                        android:hint="Surname"
+                        android:layout_height="match_parent"
+                        android:singleLine="true" />
 
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:id="@+id/imageView3"
-                android:layout_gravity="left|center_vertical"
-                android:src="@drawable/email_edittext_icon" />
-        </FrameLayout>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/imageView2"
+                        android:layout_gravity="left|center_vertical"
+                        android:src="@drawable/name_edittext_icon" />
+                </FrameLayout>
 
                 <include layout="@layout/form_line"></include>
 
                 <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp" >
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" >
 
-            <EditText
-                style="@style/oval_edittext"
-                android:layout_width="match_parent"
-                android:id="@+id/passwordET"
-                android:hint="@string/password"
-                android:layout_height="match_parent"
-                android:inputType="textPassword"
-                android:imeOptions="actionDone"
-                android:singleLine="true" />
+                    <EditText
+                        style="@style/oval_edittext"
+                        android:layout_width="match_parent"
+                        android:id="@+id/emailET"
+                        android:hint="@string/email_address"
+                        android:layout_height="match_parent"
+                        android:singleLine="true" />
 
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:id="@+id/imageView4"
-                android:layout_gravity="left|center_vertical"
-                android:src="@drawable/password_edittext_icon" />
-        </FrameLayout>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/imageView3"
+                        android:layout_gravity="left|center_vertical"
+                        android:src="@drawable/email_edittext_icon" />
+                </FrameLayout>
+
+                <include layout="@layout/form_line"></include>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" >
+
+                    <EditText
+                        style="@style/oval_edittext"
+                        android:layout_width="match_parent"
+                        android:id="@+id/passwordET"
+                        android:hint="@string/password"
+                        android:layout_height="match_parent"
+                        android:inputType="textPassword"
+                        android:imeOptions="actionDone"
+                        android:singleLine="true" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/imageView4"
+                        android:layout_gravity="left|center_vertical"
+                        android:src="@drawable/password_edittext_icon" />
+                </FrameLayout>
 
                 <include
-            layout="@layout/form_line" />
+                    layout="@layout/form_line" />
             </LinearLayout>
 
             <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Zaten Üyeyim"
-        android:id="@+id/alreadyRegisteredTV"
-        android:layout_gravity="center_horizontal"
-        android:padding="15dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/already_member"
+                android:id="@+id/alreadyRegisteredTV"
+                android:layout_gravity="center_horizontal"
+                android:padding="15dp" />
 
             <TextView
-        android:layout_width="match_parent"
+                android:layout_width="match_parent"
 
-        android:text="@string/register"
-        android:id="@+id/registerTV"
+                android:text="@string/register"
+                android:id="@+id/registerTV"
                 style="@style/main_button" />
         </LinearLayout>
-</android.support.v7.widget.CardView>
+    </android.support.v7.widget.CardView>
 </LinearLayout>

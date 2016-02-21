@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minHeight="120dp">
+    android:minHeight="120dp"
+    android:id="@+id/rowLL">
 
     <LinearLayout
         android:orientation="vertical"
@@ -19,8 +20,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hanife Teyze"
-                android:id="@+id/textView2"
+                android:text="..."
+                android:id="@+id/nameSurnameTV"
                 android:textStyle="bold"
                 android:textSize="18sp" />
 
@@ -72,7 +73,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Günün Menüsü:"
+                    android:text="@string/daily_menu"
                     android:id="@+id/textView5"
                     android:textSize="17sp" />
 
@@ -80,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="25 TL"
-                    android:id="@+id/textView7"
+                    android:id="@+id/priceTV"
                     android:textStyle="bold"
                     android:textSize="32dp" />
             </LinearLayout>
@@ -95,12 +96,12 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView6"
+                    android:id="@+id/menuTV"
                     android:background="@drawable/menu_window_bg"
                     android:padding="10dp"
                     android:layout_weight="1"
                     android:layout_marginRight="15dp"
-                    android:text="Ezogelin Çorba, Fırında Tavuk, Yoğurt, Pilav, Salata, Kola Ezogelin Çorba, Fırında Tavuk, Yoğurt, Pilav, Salata, Kola" />
+                    android:text="..." />
 
                 <ImageView
                     android:layout_width="30dp"
@@ -116,7 +117,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#EEAD32"
+        android:background="@color/primary_color"
         android:layout_marginTop="10dp"></LinearLayout>
 
 </LinearLayout>

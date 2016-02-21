@@ -13,7 +13,6 @@ import retrofit.converter.GsonConverter;
 public class ServiceConnector
 {
     public static final String BASE_URL = "https://enigmatic-chamber-57342.herokuapp.com";
-
     public static GetirAPI getirAPI;
 
     public static void init()
@@ -26,15 +25,12 @@ public class ServiceConnector
                 //.registerTypeAdapter(Date.class, new DateDeserializer())
                                      //.registerTypeAdapter(FinalDate.class, new FinalDateDeserializer())
                 .create();
-        // yyyy-MM-dd'T'HH:mm:ss
-        // dd-MM-yyyy HH:mm
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint(BASE_URL)
                 .setClient(new OkClient(okHttpClient))
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setConverter(new GsonConverter(gson))
                 .build();
-
         getirAPI = restAdapter.create(GetirAPI.class);
     }
 
